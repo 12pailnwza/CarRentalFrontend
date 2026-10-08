@@ -2,7 +2,7 @@ import Image from 'next/image';
 import InteractiveCard from './InteravtiveCard';
 
 export default function ProductCard({carName, imgSrc, onCompare} : 
-    {carName : string, imgSrc : string, onCompare:Function}) {
+    {carName : string, imgSrc : string, onCompare?:Function}) {
 
     return (
         <InteractiveCard contentName={carName}>
@@ -14,11 +14,13 @@ export default function ProductCard({carName, imgSrc, onCompare} :
                 />
             </div>
             <div className='w-full h-[15%] p-[10px]'>{carName}</div>
-            <button className='block h-[10%] text-sm rounded-md bg-sky-600 
+            {
+                onCompare? <button className='block h-[10%] text-sm rounded-md bg-sky-600 
             hover:bg-indigo-600 mx-2 px-1 py-1 text-white shadow-sm'
             onClick={(e)=>{e.stopPropagation(); e.preventDefault(); onCompare(carName)}}>
                 Compare
-            </button>
+            </button> : ' '
+            }
         </InteractiveCard>
     );
 }
