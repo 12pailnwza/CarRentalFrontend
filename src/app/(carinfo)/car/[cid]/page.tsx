@@ -1,5 +1,6 @@
 import Image from "next/image";
 import getCar from "@/libs/getCar";
+import Link from 'next/link'
 
 export default async function carDetailPage( {params} : {params : Promise<{cid : string}>} ) {
     const { cid } = await params;
@@ -30,6 +31,11 @@ export default async function carDetailPage( {params} : {params : Promise<{cid :
                 <div className='text-md mx-5'>Large Bags: {carDetail.data.largebags}</div>
                 <div className='text-md mx-5'>Small Bags: {carDetail.data.smallbags}</div>
                 <div className='text-md mx-5'>Daily Rental Rate: {carDetail.data.dayRate} (insurance included)</div>
+                <Link href={`/reservations?id=${cid}&model=${carDetail.data.model}`}>
+                    <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-1 text-white shadow-sm">
+                        Make Reservation
+                    </button>
+                </Link>
             </div>
       </div>
         </main>
