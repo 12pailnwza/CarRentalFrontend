@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import { useReducer, useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import getCars from "@/libs/getCars";
-import { CarItem, CarJson } from "../interfaces";
+import { CarItem, CarJson } from "../../interfaces";
 
 export default function CarPanel() {
 
