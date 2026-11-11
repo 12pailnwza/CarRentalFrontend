@@ -3,10 +3,11 @@ import ProductCard from "./ProductCard";
 import { useReducer, useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import getCars from "@/libs/getCars";
+import { CarItem, CarJson } from "../interfaces";
 
 export default function CarPanel() {
 
-    const [carResponse, setCarResponse] = useState(null)
+    const [carResponse, setCarResponse] = useState<CarJson | null>(null)
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -53,7 +54,7 @@ export default function CarPanel() {
             <div style={{margin:"20px", display:"flex", flexDirection:"row",
                 flexWrap:"wrap", justifyContent:"space-around", alignContent:"space-around"}}>
                     {
-                    carResponse.data.map((carItem:Object)=>(
+                    carResponse.data.map((carItem:CarItem)=>(
                         <Link href={`/car/${carItem.id}`} className="w-1/5">
                         <ProductCard carName={carItem.model} imgSrc={carItem.picture}
                             onCompare={(car:string) => {dispatchCompare({type:'add', carName:car})}}
